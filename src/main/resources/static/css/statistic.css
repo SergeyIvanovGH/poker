@@ -1,0 +1,17 @@
+.panel {
+    background-color: #fcfff5;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+    padding: 12px;
+}
+.ct-series-a .ct-line {
+    /* Set the colour of this series line */
+    stroke: #DC3522;
+    /* Control the thikness of your lines */
+    stroke-width: 3px;
+    /* Create a dashed line with a pattern */
+    stroke-dasharray: 10px 5px;
+}
+.ct-series-a .ct-point {
+    stroke: #DC3522;
+}

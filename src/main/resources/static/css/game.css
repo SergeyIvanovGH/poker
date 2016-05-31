@@ -1,0 +1,45 @@
+/* https://color.adobe.com/Poker-Chips-color-theme-6327204/edit/?copy=true */
+
+body {
+  background: #211D19;
+  padding: 50px;
+}
+
+a {
+  color: #466B55;
+  text-decoration: none;
+}
+
+img {
+  margin: 5px;
+}
+
+.table {
+  background: url(/images/table-texture.png);
+  border-radius: 10%;
+
+  padding: 50px;
+
+  width: 420px;
+  height: 150px;
+
+  margin: 0 auto;
+}
+
+.players {
+  margin: 20px auto;
+  width: 600px;
+}
+
+.hand {
+  color: white;
+
+  width: 200px;
+  height: 200px;
+  background: grey;
+  padding: 20px;
+
+  margin: 20px;
+
+  float: left;
+}
