@@ -10,3 +10,5 @@ src/main/resources/css
 .mvn/
 
 *.iml
+mvnw.*
+

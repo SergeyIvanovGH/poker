@@ -7,10 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     @RequestMapping("/")
-    public String Default() {
-        return "redirect:/home";
+    public String getDefaultPage() {
+        return "home";
     }
 
+    /*
     @RequestMapping("/home")
     public String Home() {
         return "home";
@@ -25,5 +26,6 @@ public class HomeController {
     public String game() {
         return "game";
     }
+*/
 }
 

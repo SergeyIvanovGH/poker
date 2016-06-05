@@ -4,20 +4,29 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
     <script src="js/main.js"></script>
+    <!--<base href="/">-->
 </head>
-<body ng-controller="MainController as mctrl">
+<!--<body ng-controller="MainController as mctrl">-->
+<body>
+    <!--<h1>Hello Poker!</h1>-->
 
-    <h1>Hello Poker!</h1>
-
-    <input type="text" ng-model="mctrl.hello">
-    {{mctrl.hello}}<br />
+    <!--<input type="text"> {{mctrl.hello}}<br />-->
 
     <!--<div ng-controller="SecondController">-->
-        <input type="text" ng-model="mctrl.hello">
-        <input type="button" ng-click="mctrl.louder()">
+        <!--<input type="text" ng-model="mctrl.hello">-->
+        <!--<input type="button" ng-click="mctrl.louder()">-->
     <!--</div>-->
 
-    <login-form></login-form>
+    <!--<login-form></login-form>-->
+
+    <!--<home-form></home-form>-->
+    <!--<signin-form></signin-form>-->
+    <!--<signup-form></signup-form>-->
+    <!--<game-form></game-form>-->
+
+    <ng-view></ng-view>
+
 </body>
 </html>
