@@ -4,19 +4,23 @@
     <meta charset="UTF-8">
     <title>Poker game</title>
     <link rel="stylesheet" href="css/header.css"/>
-    <script src="js/angular.min.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
     <script src="js/main.js"></script>
 </head>
 <body>
     <div class="headermenu">
         <nav>
             <ul class="headermenu_ul">
-                <li class="headermenu_li"><a class="headermenu_a" href="game">Game</a></li>
-                <li class="headermenu_li"><a class="headermenu_a" href="signin">Login</a></li>
-                <li class="headermenu_li"><a class="headermenu_a" href="statistic">Statistic</a></li>
-                <li class="headermenu_li"><a class="headermenu_a" href="signup">Registration</a></li>
+                <li class="headermenu_li"><a class="headermenu_a" href="gameform">Game</a></li>
+                <li class="headermenu_li"><a class="headermenu_a" href="signinform">Login</a></li>
+                <li class="headermenu_li"><a class="headermenu_a" href="statisticform">Statistic</a></li>
+                <li class="headermenu_li"><a class="headermenu_a" href="signupform">Registration</a></li>
             </ul>
         </nav>
     </div>
+
+    <ng-view></ng-view>
+
 </body>
 </html>

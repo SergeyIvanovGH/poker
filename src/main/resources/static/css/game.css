@@ -1,10 +1,5 @@
 /* https://color.adobe.com/Poker-Chips-color-theme-6327204/edit/?copy=true */
 
-/*body {*/
-  /*background: #211D19;*/
-  /*padding: 50px;*/
-/*}*/
-
 a {
   color: #466B55;
   text-decoration: none;
@@ -33,13 +28,10 @@ img {
 
 .hand {
   color: white;
-
   width: 200px;
   height: 200px;
   background: grey;
   padding: 20px;
-
   margin: 20px;
-
   float: left;
 }

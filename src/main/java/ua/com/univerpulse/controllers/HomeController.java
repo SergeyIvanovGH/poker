@@ -8,24 +8,8 @@ public class HomeController {
 
     @RequestMapping("/")
     public String getDefaultPage() {
-        return "home";
-    }
-
-    /*
-    @RequestMapping("/home")
-    public String Home() {
-        return "home";
-    }
-
-    @RequestMapping("/index")
-    public String Index() {
         return "index";
     }
 
-    @RequestMapping("/game")
-    public String game() {
-        return "game";
-    }
-*/
 }
 

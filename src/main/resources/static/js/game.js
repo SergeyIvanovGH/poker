@@ -23,7 +23,7 @@ $(function() {
 
     var rotationDegree = Math.floor(Math.random() * 60) - 30;
     $('<img />', {
-      src: 'images/cards/' + deck.pop() + '.png',
+      src: '/images/cards/' + deck.pop() + '.png',
       style: 'transform: rotate(' + rotationDegree + 'deg);'
     }).appendTo('#' + target);
 

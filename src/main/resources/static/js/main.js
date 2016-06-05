@@ -33,7 +33,7 @@ pokerApp.config(function config($routeProvider, $locationProvider) {
         when('/statisticform', {
             template: '<statistic-form></statistic-form>'
         }).
-        otherwise('/statisticform');
+        otherwise('/homeform');
 });
 
 pokerApp.controller('MainController', function MainController() {
