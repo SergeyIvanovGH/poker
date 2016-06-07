@@ -15,10 +15,10 @@ public class StatisticController {
 
         List<Player> players = new ArrayList<>();
 
-        players.add(new Player("One", 10));
-        players.add(new Player("Two", 8));
-        players.add(new Player("Three", 15));
-        players.add(new Player("Four", 1));
+        players.add(new Player("One"));
+        players.add(new Player("Two"));
+        players.add(new Player("Three" ));
+        players.add(new Player("Four"));
 
         return players;
     }

@@ -16,6 +16,11 @@ public class Player {
         this.rate = rate;
     }
 
+    public Player(String name) {
+        this.name = name;
+        this.rate = (int) (Math.random() * 100);
+    }
+
     public String getName() {
         return name;
     }

@@ -11,5 +11,10 @@ public class HomeController {
         return "index";
     }
 
+//    @RequestMapping("/*")
+//    public String getOtherPage() {
+//        return "index";
+//    }
+
 }
 
