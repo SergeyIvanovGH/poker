@@ -111,20 +111,6 @@ pokerApp.component('gameForm', {
                 dealCard(1, 2, targetPlayer);
             }
         }
-
-        /*
-                setTimeout(function() {
-                    dealCard(1, 2, 'player1');
-                }, 500);
-
-                setTimeout(function() {
-                    dealCard(1, 2, 'player2');
-                }, 1500);
-
-                setTimeout(function() {
-                    dealCard(1, 5, 'table');
-                }, 2500);
-        */
     }
 });
 
@@ -141,8 +127,10 @@ pokerApp.component('statisticForm', {
 pokerApp.factory('statisticService', function($http, $q) {
 
     let results = null;
+    let promise = null;
 
     function getStatistics() {
+/*
         if (!results) {
             return $http.get('/statistic').then( function(response) {
                 results = response.data;
@@ -152,10 +140,20 @@ pokerApp.factory('statisticService', function($http, $q) {
         } else {
             return $q(resolve => resolve(results));
         }
+*/
 
+        if (!promise) {
+            promise = $http.get('/statistic').then(response => {
+                results = response.data;
+                return response.data;
+            });
+        }
+
+        return promise;
     };
 
     return {
         getStatistics
     };
 });
+
