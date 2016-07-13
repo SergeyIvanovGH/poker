@@ -33,6 +33,9 @@ pokerApp.config(function config($routeProvider, $locationProvider) {
         when('/statisticform', {
             template: '<statistic-form></statistic-form>'
         }).
+        when('/listplayersform', {
+            template: '<list-players-form></list-players-form>'
+        }).
         otherwise('/homeform');
 });
 
@@ -51,16 +54,61 @@ pokerApp.component('loginForm', {
     }
 });
 
+pokerApp.component('showUserNameForm', {
+    template: '<span ng-if="$ctrl.showLogout()"><a href="/signoutform">Logout</a> user {{$ctrl.username}}</span>' +
+        '<span ng-if="!$ctrl.showLogout()"><a href="/signinform">Login</a></span>',
+
+    controller: function(userService) {
+        this.username = userService.getUserName();
+
+        this.showLogout = function() {
+            return this.username != null;
+        };
+
+    }
+});
+
 pokerApp.component('homeForm', {
     templateUrl: 'homeform.html'
 });
 
 pokerApp.component('signinForm', {
-    templateUrl: 'signinform.html'
+    templateUrl: 'signinform.html',
+    controller: function(userService) {
+
+        var vm = this;
+        vm.signin = signin;
+
+        function signin() {
+            console.log('signinForm: '+email.value + password.value);
+            userService.signin(email.value, password.value);
+        }
+    }
 });
 
+pokerApp.component('listPlayersForm', {
+    templateUrl: 'listplayersform.html',
+    controller: function(userService) {
+        const vm = this;
+        userService.listPlayers().then(function(data) {
+            return vm.players = data;
+        });
+    }
+});
+
+
 pokerApp.component('signupForm', {
-    templateUrl: 'signupform.html'
+    templateUrl: 'signupform.html',
+    controller: function(userService) {
+
+        var vm = this;
+        vm.signup = signup;
+
+        function signup() {
+            // console.log('signupForm: '+email.value + password.value);
+            userService.signup(email.value, password.value);
+        }
+    }
 });
 
 pokerApp.component('gameForm', {
@@ -124,24 +172,12 @@ pokerApp.component('statisticForm', {
     }
 });
 
+
 pokerApp.factory('statisticService', function($http, $q) {
 
-    let results = null;
     let promise = null;
 
     function getStatistics() {
-/*
-        if (!results) {
-            return $http.get('/statistic').then( function(response) {
-                results = response.data;
-                return response.data;
-            });
-
-        } else {
-            return $q(resolve => resolve(results));
-        }
-*/
-
         if (!promise) {
             promise = $http.get('/statistic').then(response => {
                 results = response.data;
@@ -157,3 +193,60 @@ pokerApp.factory('statisticService', function($http, $q) {
     };
 });
 
+
+pokerApp.factory('userService', function($http, $filter) {
+
+    let username = null;
+
+    function getUserName() {
+        console.log('userService:getUserName: '+username);
+        return username;
+    }
+
+    function signin(email, password) {
+        username = email;
+        console.log('userService:SignIn: '+email);
+    }
+
+    function signout() {
+        username = null;
+    }
+
+    function listPlayers() {
+        promise = $http.get('/listplayers').then(response => {
+            results = response.data;
+            return response.data;
+        });
+
+        return promise;
+    }
+
+    function signup(email, password) {
+        username = email;
+        // var dataObj = {email: email, password: password};
+        var dataJSON = $filter('json')({eMail: email, password: password});
+
+        // console.log('userService:signup: '+dataJSON);
+
+        $http.post('/register', dataJSON);
+    }
+
+    return {
+        getUserName: getUserName,
+        signup: signup,
+        signin: signin,
+        signout: signout,
+        listPlayers: listPlayers
+    }
+});
+
+/*
+pokerApp.filter('statisticFilter', function(value) {
+    if (value < 1000) {
+        return 'less 1000';
+    }
+    else if(value > 1000 || value < 2000) {
+        return 'between 1000 and 2000';
+    }
+});
+*/
