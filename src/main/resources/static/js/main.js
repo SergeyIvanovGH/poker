@@ -55,16 +55,21 @@ pokerApp.component('loginForm', {
 });
 
 pokerApp.component('showUserNameForm', {
-    template: '<span ng-if="$ctrl.showLogout()"><a href="/signoutform">Logout</a> user {{$ctrl.username}}</span>' +
+    template: '<span ng-if="$ctrl.showLogout()"><a ng-click="$ctrl.signout()">Logout</a> user {{$ctrl.username}}</span>' +
         '<span ng-if="!$ctrl.showLogout()"><a href="/signinform">Login</a></span>',
 
     controller: function(userService) {
-        this.username = userService.getUserName();
 
         this.showLogout = function() {
+            console.log('showLogout');
+            this.username = userService.getUserName();
             return this.username != null;
         };
 
+        this.signout = function() {
+            console.log('signout:');
+            userService.signout();
+        }
     }
 });
 
@@ -110,6 +115,7 @@ pokerApp.component('signupForm', {
         }
     }
 });
+
 
 pokerApp.component('gameForm', {
     templateUrl: 'gameform.html',
@@ -210,6 +216,7 @@ pokerApp.factory('userService', function($http, $filter) {
 
     function signout() {
         username = null;
+        console.log('userService:signout');
     }
 
     function listPlayers() {
@@ -223,7 +230,6 @@ pokerApp.factory('userService', function($http, $filter) {
 
     function signup(email, password) {
         username = email;
-        // var dataObj = {email: email, password: password};
         var dataJSON = $filter('json')({eMail: email, password: password});
 
         // console.log('userService:signup: '+dataJSON);

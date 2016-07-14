@@ -1,5 +1,5 @@
 
-<form novalidate>
+<form novalidate ng-submit="$ctrl.signin()">
     <fieldset>
         <legend>Please Sign In</legend>
         <label for="email">Email</label>
@@ -7,7 +7,7 @@
         <label for="password">Password</label>
         <input type="password" id="password" placeholder="Password" name="password" />
         <div>
-            <button ng-click="$ctrl.signin()">Sign in</button>
+            <button>Sign in</button>
         </div>
         <a href="/listplayersform">List players</a>
     </fieldset>

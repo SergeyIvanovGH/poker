@@ -5,6 +5,7 @@ import ua.com.univerpulse.model.RegistrationRequest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
@@ -24,5 +25,15 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Override
     public List<RegistrationRequest> get() {
         return registrationRequests;
+    }
+
+    @Override
+    public Optional<RegistrationRequest> findByName(String Username) {
+        for(RegistrationRequest registrationRequest : registrationRequests) {
+            if (registrationRequest.geteMail().equals(Username)) {
+                return Optional.of(registrationRequest);
+            }
+        }
+        return Optional.empty();
     }
 }
